@@ -72,4 +72,41 @@ class Film extends Eloquent
 		return $result;		
     }
 
+    public static function getSpeciesByAppearance()
+    {
+    	$result = [];
+
+    	$operator = 
+    	[
+			[
+				'$lookup' => [
+					'from' => "species",
+					'localField' => "species",
+					'foreignField' => "id",
+					'as' => "film_species"
+				]
+			],
+			[
+				'$unwind' => '$film_species'
+			],
+			[
+				'$group' => [
+					'_id' => '$film_species.id', 
+					'id' => ['$first' => '$film_species.id'], 
+					'name' => ['$first' => '$film_species.name'], 
+					'count' => ['$sum' => 1]
+				]
+			],
+			['$project' => ['_id' => 0]],
+			['$sort' => ['count' => -1]]			
+		];
+
+		$cursor = Film::raw()->aggregate($operator);
+		
+		foreach ($cursor as $document) {
+			array_push($result,(iterator_to_array($document)));
+		}
+		return $result;	
+    }
+
 }
