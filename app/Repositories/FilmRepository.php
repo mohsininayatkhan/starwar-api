@@ -18,7 +18,7 @@ class FilmRepository implements FilmRepositoryInterface
 
 	public function getSpeciesByAppearance()
 	{
-		return [];
+		return Film::getSpeciesByAppearance();
 	}
 
 	public function getPilotsByPlanet()

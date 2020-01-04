@@ -23,4 +23,9 @@ class FilmController extends Controller
     {
     	return $this->film->getPopularCharacter($top);
     }
+
+    public function getSpeciesByAppearance()
+    {
+        return $this->film->getSpeciesByAppearance();
+    }
 }
