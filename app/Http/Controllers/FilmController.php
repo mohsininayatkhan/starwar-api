@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Repositories\FilmRepositoryInterface;
+
+class FilmController extends Controller
+{    
+	protected $film;
+
+	public function __construct(FilmRepositoryInterface $film)
+    {
+        $this->film = $film;
+    }    
+
+    public function getLongestOpeningCrawl()
+    {
+        return $this->film->getLongestOpeningCrawl();
+    }
+}
