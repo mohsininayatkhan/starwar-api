@@ -29,5 +29,47 @@ class Film extends Eloquent
 		$cursor = Film::raw()->aggregate($pipeline);
 		$document = current($cursor->toArray());
 		return $document === false ? null : iterator_to_array($document);
-    }    
+    }
+
+    public static function getPopularCharacter($top=1) 
+    {
+    	$top = (int) $top;
+
+    	$result = [];
+
+    	$operator = 
+    	[
+			[
+				'$lookup' => [
+					'from' => "people",
+					'localField' => "characters",
+					'foreignField' => "id",
+					'as' => "film_people"
+				]
+			],
+			[
+				'$unwind' => '$film_people'
+			],
+			[
+				'$group' => [
+					'_id' => '$film_people.id', 
+					'id' => ['$first' => '$film_people.id'], 
+					'name' => ['$first' => '$film_people.name'], 
+					'count' => ['$sum' => 1]
+				]
+			],
+			['$sort' => ['count' => -1]],
+			['$project' => ['_id' => 0]
+			],
+			['$limit' => $top],
+		];
+
+		$cursor = Film::raw()->aggregate($operator);
+		
+		foreach ($cursor as $document) {
+			array_push($result,(iterator_to_array($document)));
+		}
+		return $result;		
+    }
+
 }
