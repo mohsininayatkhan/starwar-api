@@ -23,6 +23,6 @@ class FilmRepository implements FilmRepositoryInterface
 
 	public function getPilotsByPlanet()
 	{
-		return [];
+		return Film::getPilotsByPlanet();
 	}
 }
