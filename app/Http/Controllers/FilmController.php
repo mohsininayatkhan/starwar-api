@@ -18,4 +18,9 @@ class FilmController extends Controller
     {
         return $this->film->getLongestOpeningCrawl();
     }
+
+    public function getPopularCharacter($top=1)
+    {
+    	return $this->film->getPopularCharacter($top);
+    }
 }

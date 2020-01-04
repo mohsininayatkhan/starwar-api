@@ -13,7 +13,7 @@ class FilmRepository implements FilmRepositoryInterface
 
 	public function getPopularCharacter($top)
 	{
-		return [];
+		return Film::getPopularCharacter($top);
 	}
 
 	public function getSpeciesByAppearance()
