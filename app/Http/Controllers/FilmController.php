@@ -28,4 +28,9 @@ class FilmController extends Controller
     {
         return $this->film->getSpeciesByAppearance();
     }
+
+    public function getPilotsByPlanet()
+    {
+        return $this->film->getPilotsByPlanet();        
+    }
 }
