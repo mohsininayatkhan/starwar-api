@@ -18,7 +18,7 @@ Make sure you have the MongoDB PHP driver installed. You can find installation i
 
 Configuration
 -------------
-Make changes for MongoDB connection string in config/database.php:
+Make changes for MongoDB connection string in config/database.php using environment file (.env) :
 
 ```php
 'mongodb' => [
