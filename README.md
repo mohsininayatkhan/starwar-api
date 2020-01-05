@@ -11,10 +11,10 @@ Make sure you have the MongoDB PHP driver installed. You can find installation i
 
 **WARNING**: The old mongo PHP driver is not supported anymore in versions >= 3.0.
 
-git clone https://github.com/mohsininayatkhan/starwar-api.git 
-cd starwar-api 
-cp .env.dist .env 
-composer install 
+- git clone https://github.com/mohsininayatkhan/starwar-api.git 
+- cd starwar-api
+- cp .env.dist .env
+- composer install 
 
 Configuration
 -------------
