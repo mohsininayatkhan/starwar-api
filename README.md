@@ -13,12 +13,12 @@ Make sure you have the MongoDB PHP driver installed. You can find installation i
 
 - git clone https://github.com/mohsininayatkhan/starwar-api.git 
 - cd starwar-api
-- cp .env.dist .env
+- cp .env.testing .env
 - composer install 
 
 Configuration
 -------------
-Make changes for MongoDB connection string:
+Make changes for MongoDB connection string in config/database.php:
 
 ```php
 'mongodb' => [
@@ -28,3 +28,9 @@ Make changes for MongoDB connection string:
 ],
 ```
 
+Routes
+-------------
+- film/crawl/longest
+- film/character/top/{number?}
+- film/species
+- film/planet/pilots
