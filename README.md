@@ -37,7 +37,7 @@ Make changes for MongoDB connection string in config/database.php using environm
 
 Routes
 -------------
-- film/crawl/longest
-- film/character/top/{number?}
-- film/species
-- film/planet/pilots
+- api/film/crawl/longest
+- api/film/character/top/{number?}
+- api/film/species
+- api/film/planet/pilots
